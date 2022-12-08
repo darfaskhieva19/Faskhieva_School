@@ -1,0 +1,43 @@
+﻿<Page x:Class="Faskhieva_School.PageListOfService"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Faskhieva_School"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PageListOfService">
+
+    <Grid>
+
+        <ListView Name="LService" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch">
+            <!--<ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel HorizontalAlignment="Center"></WrapPanel>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>-->
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border Padding="1" CornerRadius="5" BorderThickness="0.5" BorderBrush="Black" >
+                        <Grid Name="gridM">
+                            <StackPanel Margin="5">
+                                <TextBlock Text="{Binding Title}" TextWrapping="Wrap" TextAlignment="Center"/>
+                                <Image />
+                                <DockPanel Margin="0,10,0,0">
+                                <TextBlock Text="{Binding Cost}"/>
+                                <TextBlock Margin="10,0,0,0" Text="{Binding DurationInSeconds}"/>
+                                </DockPanel>
+                                <TextBlock Text="{Binding Discount}"/>
+                                <DockPanel Margin="0,10,0,0">
+                                    <Button Name="btnUpdate" Content="редактировать" Click="btnUpdate_Click" Width="250"/>
+                                    <Button Name="btnDelete" Content="Удалить" Click="btnDelete_Click" Width="250"/>
+                                </DockPanel>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </Grid>
+</Page>
