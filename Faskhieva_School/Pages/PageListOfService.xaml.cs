@@ -20,10 +20,27 @@ namespace Faskhieva_School
     /// </summary>
     public partial class PageListOfService : Page
     {
+        List<Service> listFilter = new List<Service>();
         public PageListOfService()
         {
             InitializeComponent();
             LService.ItemsSource = DataBase.Base.Service.ToList();
+            cbPrice.SelectedIndex = 0;
+            cbFilter.SelectedIndex = 0; 
+
+        }
+        public void Filter()
+        {
+            switch (cbPrice.SelectedIndex)
+            {
+                case 1:
+                    //listFilter.Sort((x, y) => x.NameGroup.CompareTo(y.));
+                    break;
+                case 2:
+                    //listFilter.Sort((x, y) => x.NameGroup.CompareTo(y.NameGroup));
+                    listFilter.Reverse();
+                    break;
+            }
         }
 
         private void btnUpdate_Click(object sender, RoutedEventArgs e)
@@ -32,6 +49,16 @@ namespace Faskhieva_School
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void cbPrice_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void cbFilter_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }

@@ -7,10 +7,43 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="PageListOfService">
-
+    <Page.Resources>
+        <BitmapImage x:Key="NoImage" UriSource="\resource\picture.png"/>
+    </Page.Resources>
     <Grid>
 
-        <ListView Name="LService" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1.5*"/>
+            <RowDefinition Height="6*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel>
+            <TextBlock Text="Сортировка"/>
+            <ComboBox Name="cbPrice" SelectionChanged="cbPrice_SelectionChanged" Width="150">
+                <ComboBoxItem Content="по возрастанию"/>
+                <ComboBoxItem Content="по убыванию"/>
+            </ComboBox>
+            </StackPanel>
+                <StackPanel>
+                    <TextBlock Text="Скидка:"/>
+                    <ComboBox Name="cbFilter" SelectionChanged="cbFilter_SelectionChanged" Width="150">
+                        <ComboBoxItem Content="Все"/>
+                        <ComboBoxItem Content="от 0 до 5%"/>
+                        <ComboBoxItem Content="от 5 до 15%"/>
+                        <ComboBoxItem Content="от 15 до 30%"/>
+                        <ComboBoxItem Content="от 30 до 70%"/>
+                        <ComboBoxItem Content="от 70 до 100%"/>
+                    </ComboBox>
+                </StackPanel>
+            </StackPanel>
+            <TextBlock Text="Поиск  услуг по названию и описанию товара" />
+            <TextBox Name="tbSearch"/>
+        </StackPanel>
+        
+        <ListView Name="LService" Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch">
             <!--<ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel HorizontalAlignment="Center"></WrapPanel>
@@ -39,5 +72,11 @@
             </ListView.ItemTemplate>
         </ListView>
 
+        <StackPanel Grid.Row="2">
+            <TextBlock Text="Кол-во выведенных записей" HorizontalAlignment="Left"  Margin="3 0 3 0"/>
+            <TextBlock Name="tbZap"/>
+            <TextBlock Text="Общее количество записей" HorizontalAlignment="Left" Margin="3 0 3 0"/>
+        </StackPanel>
+        
     </Grid>
 </Page>

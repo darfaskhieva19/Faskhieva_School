@@ -5,9 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Faskhieva_School"
         mc:Ignorable="d"
-        Title="SchoolOfLanguages" Height="700" Width="1100" Icon="\resource/school_logo.ico">
+        Title="SchoolOfLanguages" Height="800" Width="1250" Icon="\resource/school_logo.ico">
     <Grid>
-        <Frame Name="mainF" NavigationUIVisibility="Hidden">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1.2*"/>
+            <RowDefinition Height="6*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Image Source="\resource\school_logo.png" Width="105" Margin="5 5 5 0"/>
+            <TextBlock Text="Школа иностранных языков" Style="{StaticResource txtHeader}"/>
+        </StackPanel>
+        
+        <Frame Name="mainF" Grid.Row="1" NavigationUIVisibility="Hidden">
             
         </Frame>
         
