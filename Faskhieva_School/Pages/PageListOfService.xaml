@@ -39,8 +39,12 @@
                     </ComboBox>
                 </StackPanel>
             </StackPanel>
-            <TextBlock Text="Поиск  услуг по названию и описанию товара" />
-            <TextBox Name="tbSearch"/>
+        <StackPanel Orientation="Horizontal">
+        <TextBlock Text="Поиск  услуг по названию" />
+                <TextBox Name="tbSearch" Width="200" TextChanged="tbSearch_TextChanged"/>
+            <TextBlock Text="Поиск  услуг по описанию" />
+                <TextBox Name="tbSearchDes"  Width="200" TextChanged="tbSearchDes_TextChanged"/>
+        </StackPanel>
         </StackPanel>
         
         <ListView Name="LService" Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch">
@@ -73,10 +77,17 @@
         </ListView>
 
         <StackPanel Grid.Row="2">
-            <TextBlock Text="Кол-во выведенных записей" HorizontalAlignment="Left"  Margin="3 0 3 0"/>
-            <TextBlock Name="tbZap"/>
-            <TextBlock Text="Общее количество записей" HorizontalAlignment="Left" Margin="3 0 3 0"/>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel>
+                    <TextBlock Text="Кол-во выведенных записей" HorizontalAlignment="Left"  Margin="3 0 3 0"/>
+                    <TextBlock Name="tbZap"/>
+                    <TextBlock Text="Общее количество записей" HorizontalAlignment="Left" Margin="3 0 3 0"/>
+                </StackPanel>
+                <Button Content="Добавить услугу" Width="150" Height="40"/>
+                </StackPanel>
         </StackPanel>
+        
+        
         
     </Grid>
 </Page>

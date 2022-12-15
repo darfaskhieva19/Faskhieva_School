@@ -26,20 +26,44 @@ namespace Faskhieva_School
             InitializeComponent();
             LService.ItemsSource = DataBase.Base.Service.ToList();
             cbPrice.SelectedIndex = 0;
-            cbFilter.SelectedIndex = 0; 
+            cbFilter.SelectedIndex = 0;
 
+            Filter();
         }
         public void Filter()
         {
+            List<Service> services = new List<Service>();
+            if (!string.IsNullOrWhiteSpace(tbSearch.Text))  // если строка не пустая и если она не состоит из пробелов
+            {
+                listFilter = listFilter.Where(x => x.Title.ToLower().Contains(tbSearch.Text.ToLower())).ToList(); //поиск по наименованию
+            }
+            if (!string.IsNullOrWhiteSpace(tbSearch.Text))  // если строка не пустая и если она не состоит из пробелов
+            {
+                listFilter = listFilter.Where(x => x.Description.ToLower().Contains(tbSearchDes.Text.ToLower())).ToList(); //поиск по описанию
+            }
+
+            //сортировка
             switch (cbPrice.SelectedIndex)
             {
+                case 0:
+                    {
+                        listFilter.Sort((x, y) => x.Cost.CompareTo(y.Cost));
+                    }
+                    break;
                 case 1:
-                    //listFilter.Sort((x, y) => x.NameGroup.CompareTo(y.));
+                    {
+                        listFilter.Sort((x, y) => x.Cost.CompareTo(y.Cost));
+                        listFilter.Reverse();
+                    }
                     break;
-                case 2:
-                    //listFilter.Sort((x, y) => x.NameGroup.CompareTo(y.NameGroup));
-                    listFilter.Reverse();
-                    break;
+            }
+
+            //фильтр
+
+            LService.ItemsSource = listFilter;
+            if (listFilter.Count == 0)
+            {
+                MessageBox.Show("нет записей");
             }
         }
 
@@ -55,12 +79,22 @@ namespace Faskhieva_School
 
         private void cbPrice_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            Filter();
         }
 
         private void cbFilter_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            Filter();
+        }
 
+        private void tbSearchDes_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Filter();
+        }
+
+        private void tbSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Filter();
         }
     }
 }
