@@ -8,12 +8,12 @@
         Title="SchoolOfLanguages" Height="800" Width="1250" Icon="\resource/school_logo.ico">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="1.2*"/>
+            <RowDefinition Height="0.9*"/>
             <RowDefinition Height="6*"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <Image Source="\resource\school_logo.png" Width="105" Margin="5 5 5 0"/>
+        <StackPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center">
+            <Image Source="\resource\school_logo.png" Width="70" Height="70" Margin="5 5 5 0"/>
             <TextBlock Text="Школа иностранных языков" Style="{StaticResource txtHeader}"/>
         </StackPanel>
         

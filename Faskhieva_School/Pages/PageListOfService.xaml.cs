@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Faskhieva_School
 {
@@ -20,7 +21,7 @@ namespace Faskhieva_School
     /// </summary>
     public partial class PageListOfService : Page
     {
-        List<Service> listFilter = new List<Service>();
+        List<Service> listFilter;
         public PageListOfService()
         {
             InitializeComponent();
@@ -32,7 +33,7 @@ namespace Faskhieva_School
         }
         public void Filter()
         {
-            List<Service> services = new List<Service>();
+            listFilter = DataBase.Base.Service.ToList();
             if (!string.IsNullOrWhiteSpace(tbSearch.Text))  // если строка не пустая и если она не состоит из пробелов
             {
                 listFilter = listFilter.Where(x => x.Title.ToLower().Contains(tbSearch.Text.ToLower())).ToList(); //поиск по наименованию
@@ -46,19 +47,34 @@ namespace Faskhieva_School
             switch (cbPrice.SelectedIndex)
             {
                 case 0:
-                    {
                         listFilter.Sort((x, y) => x.Cost.CompareTo(y.Cost));
-                    }
                     break;
                 case 1:
-                    {
                         listFilter.Sort((x, y) => x.Cost.CompareTo(y.Cost));
                         listFilter.Reverse();
-                    }
                     break;
             }
 
             //фильтр
+            switch (cbFilter.SelectedIndex)
+            {
+                case 1:
+                    listFilter = listFilter.Where(z => z.Discount >= 0 && z.Discount < 0.05).ToList();
+                    break;
+                case 2:
+                    listFilter = listFilter.Where(z => z.Discount >= 0.05 && z.Discount < 0.15).ToList();
+                    break;
+                case 3:
+                    listFilter = listFilter.Where(z => z.Discount >= 0.15 && z.Discount < 0.30).ToList();
+                    break;
+                case 4:
+                    listFilter = listFilter.Where(z => z.Discount >= 0.30 && z.Discount < 0.70).ToList();
+                    break;
+                case 5:
+                    listFilter = listFilter.Where(z => z.Discount >= 0.70 && z.Discount < 1).ToList();
+                    break;
+            }
+            tbCountZap.Text = listFilter.Count.ToString() + " из " + DataBase.Base.Service.ToList().Count.ToString();
 
             LService.ItemsSource = listFilter;
             if (listFilter.Count == 0)
