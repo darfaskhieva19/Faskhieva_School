@@ -27,5 +27,19 @@ namespace Faskhieva_School
             DataBase.Base = new SchoolEntities();
             ClassFrame.frameL.Navigate(new PageListOfService());
         }
+
+        private void tbAdmin_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+            if (tbAdmin.Text == "0000")
+            {
+                
+                ClassFrame.frameL.Navigate(new PageListOfService());
+            }
+            else
+            {
+                
+                ClassFrame.frameL.Navigate(new PageListOfService());
+            }        
+        }
     }
 }

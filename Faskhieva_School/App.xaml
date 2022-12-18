@@ -19,5 +19,23 @@
             <Setter Property="Margin" Value="3"/>
         </Style>
 
+        <ControlTemplate TargetType="Button" x:Key="Btn">
+            <Border CornerRadius="17" BorderThickness="0.5" BorderBrush="Black" Background="#04a0ff" Height="40" Width="195" Margin="4">
+                <ContentControl  VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Calibry" FontSize="16" Foreground="Black" Content="{TemplateBinding Content}"/>
+            </Border>
+        </ControlTemplate>
+
+        <ControlTemplate TargetType="Button" x:Key="Btn1">
+            <Border CornerRadius="17" BorderThickness="0.5" BorderBrush="Black" Background="#04a0ff" Height="40" Width="205" Margin="4">
+                <ContentControl  VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Calibry" FontSize="16" Foreground="Black" Content="{TemplateBinding Content}"/>
+            </Border>
+        </ControlTemplate>
+
+        <ControlTemplate TargetType="Button" x:Key="Btn2">
+            <Border CornerRadius="17" BorderThickness="0.5" BorderBrush="Black" Background="#04a0ff" Height="40" Width="150" Margin="4">
+                <ContentControl  VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Calibry" FontSize="16" Foreground="Black" Content="{TemplateBinding Content}"/>
+            </Border>
+        </ControlTemplate>
+
     </Application.Resources>
 </Application>

@@ -12,10 +12,20 @@
             <RowDefinition Height="6*"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center">
-            <Image Source="\resource\school_logo.png" Width="70" Height="70" Margin="5 5 5 0"/>
-            <TextBlock Text="Школа иностранных языков" Style="{StaticResource txtHeader}"/>
-        </StackPanel>
+        <Grid Grid.Row="0" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
+                <Image Source="\resource\school_logo.png" Width="70" Height="70" Margin="5 5 5 0"/>
+                <TextBlock Text="Школа языков" Style="{StaticResource txtHeader}"/>
+            </StackPanel>
+            <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <TextBlock Text="Режим администратора"/>
+                <TextBox Name="tbAdmin" Width="100" Height="30" SelectionChanged="tbAdmin_SelectionChanged"/>
+            </StackPanel>
+        </Grid>
         
         <Frame Name="mainF" Grid.Row="1" NavigationUIVisibility="Hidden">
             

@@ -64,6 +64,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Pages\AddUpdateService.xaml.cs">
+      <DependentUpon>AddUpdateService.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Classes\ClassFrame.cs" />
     <Compile Include="Classes\ClassService.cs" />
     <Compile Include="Client.cs">
@@ -111,6 +114,10 @@
     <Compile Include="TagOfClient.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Page Include="Pages\AddUpdateService.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

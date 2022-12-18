@@ -9,11 +9,18 @@ namespace Faskhieva_School
 {
     public partial class Service
     {
+        public string DiscountServ
+        {
+            get
+            {
+                return "* скидка " + (Discount * 100).ToString() + "%";
+            }
+        }
         public SolidColorBrush ColorDisc //услуга со скидкой
         {
             get
             {
-                if(Discount != null)
+                if (Discount != null)
                 {
                     SolidColorBrush Discount = new SolidColorBrush(Color.FromRgb(231, 250, 191));
                     return Discount;
@@ -25,12 +32,36 @@ namespace Faskhieva_School
                 }
             }
         }
-        public float Time //продолжительность занятий в минутах
+        public string Time //продолжительность занятий в минутах
         {
             get
             {
-                float time = DurationInSeconds / 60;
-                return time;
+                return string.Format($"за {DurationInSeconds / 60} минут");
+            }
+        }
+        public double Price
+        {
+            get
+            {
+                if (Discount != null)
+                {
+                    double price = (double)Cost - (double)Cost / 100 * (double)Discount;
+                    return price;
+                }
+                else
+                {
+                    return Convert.ToDouble(Cost);
+                }
+
+                //if (Discount != null)
+                //{
+                //    double f = (double)Cost - (double)Cost * (double)Discount;
+                //    return string.Format("{0:C2} {1:C2} за {2} минут *скидка {3} %", Cost, f, DurationInSeconds / 60, Discount * 100);
+                //}
+                //else
+                //{
+                //    return string.Format("{0:C2} за {1} минут", Cost, DurationInSeconds / 60);
+                //}
             }
         }
     }
