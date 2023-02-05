@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Faskhieva_School"
         mc:Ignorable="d"
-        Title="WindowsAdmin" Height="350" Width="450">
+        Title="WindowsAdmin" Height="280" Width="470">
     <Grid>
         <StackPanel Margin="15">
             <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 25 0 0">
                 <TextBlock Name="tbVhod" Text="Введите пароль:"/>
-                <TextBox Name="tbPass" Width="100" Height="40" TextAlignment="Center" Margin="10"/>
+                <TextBox Name="tbPass" Width="150" Height="30" TextAlignment="Center" Margin="10" Style="{StaticResource TB}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0 35 0 0" HorizontalAlignment="Center">
                 <Button Name="btnOtm" Content="Отмена" Click="btnOtm_Click" Template="{StaticResource Btn2}"/>

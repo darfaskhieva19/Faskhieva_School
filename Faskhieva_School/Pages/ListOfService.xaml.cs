@@ -49,10 +49,10 @@ namespace Faskhieva_School.Pages
             //сортировка
             switch (cbPrice.SelectedIndex)
             {
-                case 0:
+                case 1:
                     listFilter.Sort((x, y) => x.Cost.CompareTo(y.Cost));
                     break;
-                case 1:
+                case 2:
                     listFilter.Sort((x, y) => x.Cost.CompareTo(y.Cost));
                     listFilter.Reverse();
                     break;
@@ -91,7 +91,7 @@ namespace Faskhieva_School.Pages
             Button btn = (Button)sender;
             int index = Convert.ToInt32(btn.Uid);
             Service service = DataBase.Base.Service.FirstOrDefault(z => z.ID == index);
-            ClassFrame.frameL.Navigate(new WindowAddUp(service));
+            ClassFrame.frameL.Navigate(new PageAddUpdate(service));
         }              
 
         private void btnDelete_Click(object sender, RoutedEventArgs e) //удаление записи
@@ -177,9 +177,8 @@ namespace Faskhieva_School.Pages
 
         private void Add_Click(object sender, RoutedEventArgs e) //переход на добавление услуги
         {
-            WindowAddUp windowAddUp = new WindowAddUp();
-            windowAddUp.ShowDialog();
-            ClassFrame.frameL.Navigate(new WindowAddUp());
+            
+            ClassFrame.frameL.Navigate(new PageAddUpdate());
         }
 
         private void btnUpdate_Loaded(object sender, RoutedEventArgs e)

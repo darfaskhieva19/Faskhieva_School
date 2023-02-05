@@ -112,24 +112,26 @@ namespace Faskhieva_School
         {
             try
             {
-                string hour = tTime.Text;
-                string minute = tTime2.Text;
-                int hours = Convert.ToInt32(hour);
-                int min = Convert.ToInt32(minute);
-                if (hours < 24 && min < 60)
+                if (tTime.Text != "" && tTime2.Text != "" && tTime.Text.Length == 2 && tTime2.Text.Length == 2)
                 {
-                    MessageBox.Show("Введите часы корректно!", "Запись на услугу");
-                }
-                else
-                {
-                    if (min > 0 || min < 60)
-                    {
-                        MessageBox.Show("Введите минуты корректно!", "Запись на услугу");
-                    }
-                    else
-                    {
+                    int hour = Convert.ToInt32(tTime.Text);
+                    int min = Convert.ToInt32(tTime2.Text);
 
-                    }
+                    //if (hours < 24 && min < 60)
+                    //{
+                    //    MessageBox.Show("Введите часы корректно!", "Запись на услугу");
+                    //}
+                    //else
+                    //{
+                    //    if (min > 0 || min < 60)
+                    //    {
+                    //        MessageBox.Show("Введите минуты корректно!", "Запись на услугу");
+                    //    }
+                    //    else
+                    //    {
+
+                    //    }
+                    //}
                 }
             }
             catch

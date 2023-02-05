@@ -79,7 +79,7 @@
                                     <Image Width="170" Height="170" Uid="{Binding ID}" Source="{Binding MainImagePath, TargetNullValue={StaticResource NoImage}}"/>
                                 </StackPanel>
                                 <DockPanel>
-                                    <StackPanel DockPanel.Dock="Top">
+                                    <StackPanel DockPanel.Dock="Top" Margin="15 0 0 0">
                                         <TextBlock Text="{Binding Title}" Name="txtHeader"/>
                                         <StackPanel Orientation="Horizontal">
                                             <TextBlock Name="tbOldPrice" Uid="{Binding Discount}" Text="{Binding Cost, StringFormat='{}{0:0}\ '}" TextDecorations="Strikethrough" Loaded="tbOldPrice_Loaded"/>

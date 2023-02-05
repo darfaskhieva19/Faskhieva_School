@@ -94,6 +94,9 @@
     <Compile Include="Pages\ListOfService.xaml.cs">
       <DependentUpon>ListOfService.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\PageAddUpdate.xaml.cs">
+      <DependentUpon>PageAddUpdate.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\PageUpcomingEntries.xaml.cs">
       <DependentUpon>PageUpcomingEntries.xaml</DependentUpon>
     </Compile>
@@ -121,9 +124,6 @@
     <Compile Include="Windows\WindowSigningUp.xaml.cs">
       <DependentUpon>WindowSigningUp.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\WindowAddUp.xaml.cs">
-      <DependentUpon>WindowAddUp.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Windows\WindowsAdmin.xaml.cs">
       <DependentUpon>WindowsAdmin.xaml</DependentUpon>
     </Compile>
@@ -147,15 +147,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\PageAddUpdate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\PageUpcomingEntries.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\WindowSigningUp.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\WindowAddUp.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

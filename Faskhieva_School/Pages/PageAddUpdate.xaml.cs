@@ -11,14 +11,15 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Faskhieva_School
+namespace Faskhieva_School.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для WindowAddUp.xaml
+    /// Логика взаимодействия для PageAddUpdate.xaml
     /// </summary>
-    public partial class WindowAddUp : Window
+    public partial class PageAddUpdate : Page
     {
         public object OpenFileDialoge { get; private set; }
 
@@ -26,11 +27,16 @@ namespace Faskhieva_School
         bool flag = false;
 
         string path;
-        public WindowAddUp(Service service) //конструктор для редактирования
+        public PageAddUpdate() //для добавления
         {
             InitializeComponent();
+            ImageSer.Source = new BitmapImage(new Uri("..\\resourse\\picture.png", UriKind.Relative));
+        }
 
+        public PageAddUpdate(Service service) //конструктор для редактирования
+        {
             this.service = service;
+            InitializeComponent();
             flag = true;
             tbID.Visibility = Visibility.Visible;
 
@@ -43,11 +49,7 @@ namespace Faskhieva_School
             btnUpPhoto.Content = "Изменить фото";
             txtH.Text = "Изменение услуги";
             btnSave.Content = "Изменить";
-        }
-        public WindowAddUp() //конструктор для добавления
-        {
-            InitializeComponent();
-            ImageSer.Source = new BitmapImage(new Uri("..\\resourse\\picture.png", UriKind.Relative));
+
         }
 
         private void btnUpPhoto_Click(object sender, RoutedEventArgs e)
@@ -72,7 +74,8 @@ namespace Faskhieva_School
         {
 
         }
-        private void tbTime_PreviewTextInput(object sender, TextCompositionEventArgs e) //запрет ввода символов
+
+        private void tbTime_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             if (!(Char.IsDigit(e.Text, 0)))
             {
@@ -82,7 +85,7 @@ namespace Faskhieva_School
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
-
+            ClassFrame.frameL.Navigate(new ListOfService());
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
@@ -97,15 +100,10 @@ namespace Faskhieva_School
                         {
                             if (Times(tbTime.Text))
                             {
-                                if (flag == false)
-                                {
-                                    service = new Service();
-                                }
-                                List<Service> services = DataBase.Base.Service.Where(z => z.Title == tbName.Text).ToList();
-                                if (services.Count > 0)
-                                {
-                                    MessageBox.Show("Услуга с таким наименованием уже существует!");
-                                }
+                                //if (flag == false)
+                                //{
+                                //    service = new Service();
+                                //}                                
                                 service.Title = tbName.Text;
                                 service.Cost = Convert.ToDecimal(tbPrice.Text);
                                 service.DurationInSeconds = Convert.ToInt32(tbTime.Text);
@@ -135,7 +133,7 @@ namespace Faskhieva_School
                                 {
                                     MessageBox.Show("Успешное добавление услуги!");
                                 }
-                                Close();
+                                ClassFrame.frameL.Navigate(new Pages.ListOfService());
                             }
                         }
                         else
@@ -178,6 +176,5 @@ namespace Faskhieva_School
                 MessageBox.Show("Продолжительность занятия не может быть отрицательным и превышать 4 часов!");
             }
         }
-
     }
 }
