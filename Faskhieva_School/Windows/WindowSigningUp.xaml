@@ -1,0 +1,51 @@
+﻿<Window x:Class="Faskhieva_School.WindowSigningUp"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Faskhieva_School"
+        mc:Ignorable="d"
+        Title="WindowSigningUp" Height="420" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="6*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        
+        <TextBlock Text="Добавление записи на услугу" Name="tHeader" Style="{StaticResource txtHeader}"/>
+
+        <StackPanel Grid.Row="1">
+            <StackPanel Orientation="Horizontal" Margin="10 10 0 0">
+                <TextBlock Text="Наименование:"/>
+                <TextBlock Name="tbName"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="10 10 0 0">
+                <TextBlock Text="Длительность (мин.):"/>
+                <TextBlock Name="tbTime"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="5 10 0 0">
+                <GroupBox Header="Выберите клиента" Width="350">
+                    <ComboBox Name="cbClient" Height="30"/>
+                </GroupBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0 10 0 0">
+                <TextBlock Text="Дата" HorizontalAlignment="Center"/>
+                <DatePicker x:Name="dpDate" Width="300" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0 15 0 0">
+                <TextBlock Text="Время начала" HorizontalAlignment="Center" Margin="10 0 10 0"/>
+                <TextBox Name="tTime" Width="80" Height="30" PreviewTextInput="tTime_PreviewTextInput"  TextAlignment="Center" TextChanged="tTime_TextChanged"/>
+                <TextBlock Text=":"/>
+                <TextBox Name="tTime2" Width="80" Height="30" PreviewTextInput="tTime2_PreviewTextInput" TextAlignment="Center" TextChanged="tTime2_TextChanged"/>
+                <TextBlock Text="Время конца" HorizontalAlignment="Center" Margin="10 0 10 0"/>
+                <TextBox Name="tEndTime" Width="100" Height="30" IsReadOnly="True"/>
+            </StackPanel>
+        </StackPanel>
+
+        <Grid Grid.Row="2">
+            <Button Content="Вернуться" Name="btnBack" Click="btnBack_Click" Template="{StaticResource Btn2}" HorizontalAlignment="Left"/>
+            <Button Content="Добавить запись" Name="btnSave" Click="btnSave_Click"  Template="{StaticResource Btn1}" HorizontalAlignment="Center"/>
+        </Grid>
+    </Grid>
+</Window>

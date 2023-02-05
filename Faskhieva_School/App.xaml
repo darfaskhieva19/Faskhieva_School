@@ -37,5 +37,11 @@
             </Border>
         </ControlTemplate>
 
+        <ControlTemplate TargetType="Button" x:Key="Btn3">
+            <Border CornerRadius="17" BorderThickness="0.5" BorderBrush="Black" Background="#04a0ff" Height="40" Width="190" Margin="4">
+                <ContentControl  VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Calibry" FontSize="16" Foreground="Black" Content="{TemplateBinding Content}"/>
+            </Border>
+        </ControlTemplate>
+
     </Application.Resources>
 </Application>

@@ -1,0 +1,75 @@
+﻿<Window x:Class="Faskhieva_School.WindowAddUp"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Faskhieva_School"
+        mc:Ignorable="d"
+        Title="WindowAddUp" Height="580" Width="800">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="6*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="Добавление услуги" Name="txtH" Style="{StaticResource txtHeader}"/>
+
+            <StackPanel Grid.Row="1">
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="15">
+                    <Image Source="\resource/picture.png" Width="150" Name="ImageSer"/>
+                    <StackPanel Margin="10">
+                        <Button Name="btnUpPhoto" Content="Добавить фото" Click="btnUpPhoto_Click" Margin="5" Template="{StaticResource Btn2}"/>
+                        <Button Content="Добавить доп.фото" Name="btnDopPhoto" Click="btnDopPhoto_Click" Template="{StaticResource Btn3}"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <TextBlock Text="Индентификатор" Name="tbID" Visibility="Hidden"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                        <TextBlock Text="Наименование:" />
+                        <TextBox Name="tbName" Width="510"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <StackPanel Margin="5">
+                            <TextBlock Text="Стоимость"/>
+                            <TextBox Name="tbPrice" Width="100"/>
+                        </StackPanel>
+                        <StackPanel Margin="5">
+                            <TextBlock Text="Длительность (мин.)"/>
+                            <TextBox Name="tbTime" Width="100" PreviewTextInput="tbTime_PreviewTextInput"/>
+                        </StackPanel>
+                        <StackPanel Margin="5">
+                            <TextBlock Text="Скидка"/>
+                            <TextBox Name="tbDiscount" Width="100"/>
+                        </StackPanel>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                        <TextBlock Text="Описание"/>
+                        <TextBox Name="tbDes" TextWrapping="Wrap" AcceptsReturn="True" Height="100" Width="600"/>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+
+            <Grid Grid.Row="2">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0">
+                    <Button Content="Вернуться" Name="btnBack" Click="btnBack_Click"  Template="{StaticResource Btn2}"/>
+                </StackPanel>
+                <StackPanel Grid.Column="1">
+                    <Button Content="Добавить услугу" Name="btnSave" Click="btnSave_Click" Template="{StaticResource Btn1}"/>
+                </StackPanel>
+
+            </Grid>
+        </Grid>
+</Window>
