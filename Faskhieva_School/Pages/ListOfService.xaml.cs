@@ -41,10 +41,10 @@ namespace Faskhieva_School.Pages
             {
                 listFilter = listFilter.Where(x => x.Title.ToLower().Contains(tbSearch.Text.ToLower())).ToList(); //поиск по наименованию
             }
-            if (!string.IsNullOrWhiteSpace(tbSearchDes.Text))  // если строка не пустая и если она не состоит из пробелов
-            {
-                listFilter = listFilter.Where(x => x.Description.ToLower().Contains(tbSearchDes.Text.ToLower())).ToList(); //поиск по описанию
-            }
+            //if (!string.IsNullOrWhiteSpace(tbSearchDes.Text))  // если строка не пустая и если она не состоит из пробелов
+            //{
+            //    listFilter = listFilter.Where(x => x.Description.ToLower().Contains(tbSearchDes.Text.ToLower())).ToList(); //поиск по описанию
+            //}
 
             //сортировка
             switch (cbPrice.SelectedIndex)
@@ -258,7 +258,12 @@ namespace Faskhieva_School.Pages
 
         private void btnExitAdmin_Click(object sender, RoutedEventArgs e)
         {
-            btnAdmin.Visibility = Visibility.Visible;
+            if (MessageBox.Show("Вы действительно хотите выйти из режима администратора?", "Системное сообщение", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+
+            }
+
+                btnAdmin.Visibility = Visibility.Visible;
             btnExitAdmin.Visibility = Visibility.Collapsed;
             Add.Visibility = Visibility.Collapsed;
             btnZap.Visibility = Visibility.Collapsed;

@@ -18,23 +18,13 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="2.5*"/>
-                <ColumnDefinition Width="1*"/>
-            </Grid.ColumnDefinitions>
-            <StackPanel Grid.Column="0">
-                <TextBlock Text="Список услуг" Style="{StaticResource txtHeader}"/>
-            </StackPanel>
-            <StackPanel Grid.Column="1" Orientation="Horizontal">
-                <Button Name="btnAdmin" Click="btnAdmin_Click" Template="{StaticResource Btn}" Content="Режим администратора" Visibility="Visible" Loaded="btnAdmin_Loaded"/>
-                <Button Name="btnExitAdmin" Click="btnExitAdmin_Click" Template="{StaticResource Btn}" Visibility="Collapsed" Content="Выйти из режима"/>
-            </StackPanel>
-        </Grid>
+        <StackPanel Grid.Row="0">           
+                <TextBlock Text="Список услуг" Style="{StaticResource txtHeader}"/>            
+        </StackPanel>
         
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1.5*"/>
+                <ColumnDefinition Width="0.9*"/>
                 <ColumnDefinition Width="1.5*"/>
                 <ColumnDefinition Width="1.5*"/>
                 <ColumnDefinition Width="1.5*"/>
@@ -60,12 +50,12 @@
                 </ComboBox>
             </StackPanel>
             <StackPanel Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center">
-                <TextBlock Text="Поиск по наименованию"/>
-                <TextBlock Text="Поиск по описанию"/>
-            </StackPanel>
-            <StackPanel Grid.Column="3" HorizontalAlignment="Center" Margin="5" VerticalAlignment="Center">
+                <TextBlock Text="Поиск по наименованию и описанию"/>
                 <TextBox Name="tbSearch" Width="190" Height="25" TextChanged="tbSearch_TextChanged"/>
-                <TextBox Name="tbSearchDes" Margin="0 5 0 0" Width="190" Height="25" TextChanged="tbSearchDes_TextChanged"/>
+            </StackPanel>
+            <StackPanel Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Button Name="btnAdmin" Click="btnAdmin_Click" Template="{StaticResource Btn}" Content="Режим администратора" Visibility="Visible" Loaded="btnAdmin_Loaded"/>
+                <Button Name="btnExitAdmin" Click="btnExitAdmin_Click" Template="{StaticResource Btn}" Visibility="Collapsed" Content="Выйти из режима"/>
             </StackPanel>
         </Grid>
 

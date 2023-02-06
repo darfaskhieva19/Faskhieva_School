@@ -27,6 +27,7 @@ namespace Faskhieva_School.Pages
         bool flag = false;
 
         string path;
+
         public PageAddUpdate() //для добавления
         {
             InitializeComponent();
@@ -100,10 +101,10 @@ namespace Faskhieva_School.Pages
                         {
                             if (Times(tbTime.Text))
                             {
-                                //if (flag == false)
-                                //{
-                                //    service = new Service();
-                                //}                                
+                                if (flag == false)
+                                {
+                                    service = new Service();
+                                }
                                 service.Title = tbName.Text;
                                 service.Cost = Convert.ToDecimal(tbPrice.Text);
                                 service.DurationInSeconds = Convert.ToInt32(tbTime.Text);
@@ -122,7 +123,7 @@ namespace Faskhieva_School.Pages
                                 else
                                 {
                                     service.Discount = Convert.ToDouble(tbDiscount.Text) / 100;
-                                }
+                                }                               
                                 DataBase.Base.Service.Add(service);
                                 DataBase.Base.SaveChanges();
                                 if (flag)

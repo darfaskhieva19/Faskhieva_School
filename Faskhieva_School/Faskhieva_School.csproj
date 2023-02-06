@@ -77,9 +77,6 @@
     <Compile Include="DocumentByService.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="ExitAdmin.xaml.cs">
-      <DependentUpon>ExitAdmin.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Gender.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -127,10 +124,6 @@
     <Compile Include="Windows\WindowsAdmin.xaml.cs">
       <DependentUpon>WindowsAdmin.xaml</DependentUpon>
     </Compile>
-    <Page Include="ExitAdmin.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

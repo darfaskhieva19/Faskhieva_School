@@ -18,5 +18,9 @@
 
         <TextBlock Text="Ближайшие записи" Style="{StaticResource txtHeader}"/>
 
+        <StackPanel Grid.Row="2" HorizontalAlignment="Left">
+            <Button Name="btnBack" Content="Вернуться в меню" Click="btnBack_Click" Template="{StaticResource Btn}"/>
+        </StackPanel>
+
     </Grid>
 </Page>

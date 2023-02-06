@@ -24,5 +24,10 @@ namespace Faskhieva_School
         {
             InitializeComponent();
         }
+
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            ClassFrame.frameL.Navigate(new Pages.ListOfService());
+        }
     }
 }

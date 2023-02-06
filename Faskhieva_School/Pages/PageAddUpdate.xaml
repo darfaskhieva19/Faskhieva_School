@@ -20,7 +20,7 @@
         <StackPanel Grid.Row="1">
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="15">
-                <Image Source="\resource/picture.png" Width="150" Name="ImageSer"/>
+                <Image Source="\resource/picture.png" Width="160" Height="160" Name="ImageSer"/>
                 <StackPanel Margin="10">
                     <Button Name="btnUpPhoto" Content="Добавить фото" Click="btnUpPhoto_Click" Margin="5" Template="{StaticResource Btn2}"/>
                     <Button Content="Добавить доп.фото" Name="btnDopPhoto" Click="btnDopPhoto_Click" Template="{StaticResource Btn3}"/>
