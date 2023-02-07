@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -28,10 +29,18 @@ namespace Faskhieva_School
 
             this.service = service;
             tbName.Text = service.Title;
-            tbTime.Text = service.Time + "минут";
+            tbTime.Text = service.Time + " ";
             cbClient.ItemsSource = DataBase.Base.Client.ToList();
+            tTime.Text = DateTime.Now.ToString("HH");
+            tTime2.Text = DateTime.Now.ToString("mm");
             cbClient.SelectedValuePath = "ID";
             cbClient.DisplayMemberPath = "FIO";
+
+            int HH = Convert.ToInt32(DateTime.Now.ToString("HH"));
+            int mm = Convert.ToInt32(DateTime.Now.ToString("mm"));
+            DateTime time = new DateTime(2000, 2, 2, HH, mm, 0);
+            DateTime date = time.AddMinutes(Convert.ToInt32(service.DurationInSeconds / 60));
+            tEndTime.Text = date.ToShortTimeString();
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
@@ -61,9 +70,9 @@ namespace Faskhieva_School
                         }
                         else
                         {
-                            ClientService clientService = new ClientService();
-                            clientService.ClientID = (int)cbClient.SelectedIndex+1;
+                            ClientService clientService = new ClientService();                           
                             clientService.ServiceID = service.ID;
+                            clientService.ClientID = (int)cbClient.SelectedIndex + 1;
 
                             DateTime dateT = dpDate.SelectedDate.Value;
                             dateT = dateT.Add(new TimeSpan(Convert.ToInt32(tTime.Text), Convert.ToInt32(tTime2.Text), 0));
@@ -83,32 +92,7 @@ namespace Faskhieva_School
             }
         }
 
-        private void tTime2_PreviewTextInput(object sender, TextCompositionEventArgs e) //запрет на ввод символов
-        {
-            if (!Char.IsDigit(e.Text, 0))
-            {
-                e.Handled = true;
-            }
-        }
-
         private void tTime_TextChanged(object sender, RoutedEventArgs e)
-        {
-            ShowTime();
-        }
-
-        private void tTime2_TextChanged(object sender, RoutedEventArgs e)
-        {
-            ShowTime();
-        }
-
-        private void tTime_PreviewTextInput(object sender, TextCompositionEventArgs e) //запрет на ввод символов
-        {
-            if (!Char.IsDigit(e.Text, 0))
-            {
-                e.Handled = true;
-            }
-        }
-        public void ShowTime()
         {
             try
             {
@@ -117,26 +101,31 @@ namespace Faskhieva_School
                     int hour = Convert.ToInt32(tTime.Text);
                     int min = Convert.ToInt32(tTime2.Text);
 
-                    //if (hours < 24 && min < 60)
-                    //{
-                    //    MessageBox.Show("Введите часы корректно!", "Запись на услугу");
-                    //}
-                    //else
-                    //{
-                    //    if (min > 0 || min < 60)
-                    //    {
-                    //        MessageBox.Show("Введите минуты корректно!", "Запись на услугу");
-                    //    }
-                    //    else
-                    //    {
-
-                    //    }
-                    //}
+                    if (hour < 24 || min < 60)
+                    {
+                        int HH = Convert.ToInt32(hour);
+                        int MM = Convert.ToInt32(min);
+                        DateTime time = new DateTime(2000, 2, 2, HH, MM, 0);
+                        DateTime data = time.AddMinutes(Convert.ToInt32(service.DurationInSeconds / 60));
+                        tEndTime.Text = data.ToShortTimeString();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Введите время корректно!", "Ошибка", MessageBoxButton.OK);
+                    }                    
                 }
             }
             catch
             {
                 MessageBox.Show("Что-то пошло не так..");
+            }
+        }
+
+        private void tTime_PreviewTextInput(object sender, TextCompositionEventArgs e) //запрет на ввод символов
+        {
+            if (!Char.IsDigit(e.Text, 0))
+            {
+                e.Handled = true;
             }
         }
     }

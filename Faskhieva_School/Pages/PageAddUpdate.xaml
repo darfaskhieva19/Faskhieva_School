@@ -69,7 +69,7 @@
                 <Button Content="Вернуться" Name="btnBack" Click="btnBack_Click"  Template="{StaticResource Btn2}"/>
             </StackPanel>
             <StackPanel Grid.Column="1">
-                <Button Content="Добавить услугу" Name="btnSave" Click="btnSave_Click" Template="{StaticResource Btn1}"/>
+                <Button Content="Добавить" Name="btSave" Click="btSave_Click" Template="{StaticResource Btn1}"/>
             </StackPanel>
 
         </Grid>

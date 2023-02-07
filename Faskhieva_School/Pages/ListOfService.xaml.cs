@@ -41,10 +41,10 @@ namespace Faskhieva_School.Pages
             {
                 listFilter = listFilter.Where(x => x.Title.ToLower().Contains(tbSearch.Text.ToLower())).ToList(); //поиск по наименованию
             }
-            //if (!string.IsNullOrWhiteSpace(tbSearchDes.Text))  // если строка не пустая и если она не состоит из пробелов
-            //{
-            //    listFilter = listFilter.Where(x => x.Description.ToLower().Contains(tbSearchDes.Text.ToLower())).ToList(); //поиск по описанию
-            //}
+            if (!string.IsNullOrWhiteSpace(tbSearchDes.Text))  // если строка не пустая и если она не состоит из пробелов
+            {
+                listFilter = listFilter.Where(x => x.Description.ToLower().Contains(tbSearchDes.Text.ToLower())).ToList(); //поиск по описанию
+            }
 
             //сортировка
             switch (cbPrice.SelectedIndex)

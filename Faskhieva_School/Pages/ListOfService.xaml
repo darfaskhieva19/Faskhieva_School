@@ -5,26 +5,22 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Faskhieva_School.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="470" d:DesignWidth="800"
       Title="ListOfService">
     <Page.Resources>
         <BitmapImage x:Key="NoImage" UriSource="/resource/picture.png"/>
     </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1.5*"/>
+            <RowDefinition Height="1.8*"/>
             <RowDefinition Height="6*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0">           
-                <TextBlock Text="Список услуг" Style="{StaticResource txtHeader}"/>            
-        </StackPanel>
-        
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.9*"/>
+                <ColumnDefinition Width="1.5*"/>
                 <ColumnDefinition Width="1.5*"/>
                 <ColumnDefinition Width="1.5*"/>
                 <ColumnDefinition Width="1.5*"/>
@@ -35,12 +31,12 @@
                 <TextBlock Text="Скидка"/>
             </StackPanel>
             <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <ComboBox Name="cbPrice" SelectionChanged="cbPrice_SelectionChanged" Width="185" Height="30">
+                <ComboBox Name="cbPrice" SelectionChanged="cbPrice_SelectionChanged" Width="185" Height="33">
                     <ComboBoxItem Content="Без сортировки"/>
                     <ComboBoxItem Content="по возрастанию"/>
                     <ComboBoxItem Content="по убыванию"/>
                 </ComboBox>
-                <ComboBox Name="cbFilter" SelectionChanged="cbFilter_SelectionChanged" Width="185" Height="30" Margin="0 5 0 0">
+                <ComboBox Name="cbFilter" SelectionChanged="cbFilter_SelectionChanged" Width="185" Height="33" Margin="0 5 0 0">
                     <ComboBoxItem Content="Все"/>
                     <ComboBoxItem Content="от 0 до 5%"/>
                     <ComboBoxItem Content="от 5 до 15%"/>
@@ -49,17 +45,21 @@
                     <ComboBoxItem Content="от 70 до 100%"/>
                 </ComboBox>
             </StackPanel>
-            <StackPanel Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center">
-                <TextBlock Text="Поиск по наименованию и описанию"/>
-                <TextBox Name="tbSearch" Width="190" Height="25" TextChanged="tbSearch_TextChanged"/>
+            <StackPanel Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center">               
+                    <TextBlock Text="Поиск по наименованию"/>
+                <TextBlock Text="Поиск по описанию"/>
             </StackPanel>
             <StackPanel Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBox Name="tbSearch" Width="190" Height="25" TextChanged="tbSearch_TextChanged"/>
+                <TextBox Name="tbSearchDes" Width="190" Height="25" TextChanged="tbSearchDes_TextChanged" Margin="0 5 0 0"/>
+            </StackPanel>             
+            <StackPanel Grid.Column="4" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Button Name="btnAdmin" Click="btnAdmin_Click" Template="{StaticResource Btn}" Content="Режим администратора" Visibility="Visible" Loaded="btnAdmin_Loaded"/>
                 <Button Name="btnExitAdmin" Click="btnExitAdmin_Click" Template="{StaticResource Btn}" Visibility="Collapsed" Content="Выйти из режима"/>
             </StackPanel>
         </Grid>
 
-        <ListView Name="LService" Grid.Row="2" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch">
+        <ListView Name="LService" Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Border Padding="1" CornerRadius="5" BorderThickness="0.5" BorderBrush="Black" >
@@ -91,7 +91,7 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <Grid Grid.Row="3">
+        <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>

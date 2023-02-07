@@ -35,9 +35,9 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0 15 0 0">
                 <TextBlock Text="Время начала" HorizontalAlignment="Center" Margin="10 0 10 0"/>
-                <TextBox Name="tTime" Width="80" Height="30" PreviewTextInput="tTime_PreviewTextInput"  TextAlignment="Center" TextChanged="tTime_TextChanged"/>
+                <TextBox Name="tTime" Width="60" Height="30" PreviewTextInput="tTime_PreviewTextInput"  TextAlignment="Center" TextChanged="tTime_TextChanged"/>
                 <TextBlock Text=":"/>
-                <TextBox Name="tTime2" Width="80" Height="30" PreviewTextInput="tTime2_PreviewTextInput" TextAlignment="Center" TextChanged="tTime2_TextChanged"/>
+                <TextBox Name="tTime2" Width="60" Height="30" PreviewTextInput="tTime_PreviewTextInput" TextAlignment="Center" TextChanged="tTime_TextChanged"/>
                 <TextBlock Text="Время конца" HorizontalAlignment="Center" Margin="10 0 10 0"/>
                 <TextBox Name="tEndTime" Width="100" Height="30" IsReadOnly="True"/>
             </StackPanel>
