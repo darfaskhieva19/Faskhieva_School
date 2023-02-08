@@ -36,6 +36,8 @@ namespace Faskhieva_School.Pages
         {
             InitializeComponent();
             ImageSer.Source = new BitmapImage(new Uri("..\\resource\\picture.png", UriKind.Relative));
+            btnDeletePhoto.Visibility = Visibility.Visible;
+            btnDopPhoto.Visibility = Visibility.Collapsed;
         }
 
         public PageAddUpdate(Service service) //конструктор для редактирования
@@ -66,6 +68,10 @@ namespace Faskhieva_School.Pages
                 path = null;
                 ImageSer.Source = new BitmapImage(new Uri("..\\resource\\picture.png", UriKind.Relative));
             }
+
+            btnDopPhoto.Visibility=Visibility.Visible;
+            btnDeletePhoto.Visibility = Visibility.Visible;
+
         }
         private void btSave_Click(object sender, RoutedEventArgs e)
         {
@@ -162,6 +168,11 @@ namespace Faskhieva_School.Pages
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
             ClassFrame.frameL.Navigate(new ListOfService());
-        }       
+        }
+
+        private void btnDeletePhoto_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
