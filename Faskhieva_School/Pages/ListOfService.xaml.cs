@@ -9,6 +9,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -43,7 +44,15 @@ namespace Faskhieva_School.Pages
             }
             if (!string.IsNullOrWhiteSpace(tbSearchDes.Text))  // если строка не пустая и если она не состоит из пробелов
             {
-                listFilter = listFilter.Where(x => x.Description.ToLower().Contains(tbSearchDes.Text.ToLower())).ToList(); //поиск по описанию
+                List<Service> des = listFilter.Where(x => x.Description != null).ToList();
+                if (des.Count > 0)
+                {
+                    listFilter = des.Where(x => x.Description.ToLower().Contains(tbSearchDes.Text.ToLower())).ToList();//поиск по описанию
+                }
+                else
+                {
+                    MessageBox.Show("Нет описания");
+                }                
             }
 
             //сортировка
@@ -258,16 +267,17 @@ namespace Faskhieva_School.Pages
 
         private void btnExitAdmin_Click(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show("Вы действительно хотите выйти из режима администратора?", "Системное сообщение", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            MessageBoxResult k = MessageBox.Show("Вы действительно хотите выйти из режима администратора?", "Системное сообщение", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (k == MessageBoxResult.Yes)
             {
-
-            }
-
+                MessageBox.Show("Режим администратора выключен");
+                ClassFrame.frameL.Navigate(new Pages.ListOfService());
                 btnAdmin.Visibility = Visibility.Visible;
-            btnExitAdmin.Visibility = Visibility.Collapsed;
-            Add.Visibility = Visibility.Collapsed;
-            btnZap.Visibility = Visibility.Collapsed;
-            ClassFrame.frameL.Navigate(new Pages.ListOfService());
+                btnExitAdmin.Visibility = Visibility.Collapsed;
+                Add.Visibility = Visibility.Collapsed;
+                btnZap.Visibility = Visibility.Collapsed;
+                code = "00";
+            }            
         }
 
         private void btnExitAdmin_Loaded(object sender, RoutedEventArgs e)

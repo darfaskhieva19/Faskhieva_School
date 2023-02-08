@@ -55,7 +55,7 @@
             </StackPanel>             
             <StackPanel Grid.Column="4" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Button Name="btnAdmin" Click="btnAdmin_Click" Template="{StaticResource Btn}" Content="Режим администратора" Visibility="Visible" Loaded="btnAdmin_Loaded"/>
-                <Button Name="btnExitAdmin" Click="btnExitAdmin_Click" Template="{StaticResource Btn}" Visibility="Collapsed" Content="Выйти из режима"/>
+                <Button Name="btnExitAdmin" Click="btnExitAdmin_Click" Template="{StaticResource Btn}" Visibility="Collapsed" Content="Выйти из режима" Loaded="btnExitAdmin_Loaded"/>
             </StackPanel>
         </Grid>
 
