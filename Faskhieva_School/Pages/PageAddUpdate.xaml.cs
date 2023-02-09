@@ -22,27 +22,22 @@ namespace Faskhieva_School.Pages
     /// </summary>
     public partial class PageAddUpdate : Page
     {
-        public object OpenFileDialoge { get; private set; }
-
         Service service;
         bool flag;
-
         ServicePhoto photo;        
         bool servicePh;
-
         string path;
 
         public PageAddUpdate() //для добавления
         {
             InitializeComponent();
-            ImageSer.Source = new BitmapImage(new Uri("..\\resource\\picture.png", UriKind.Relative));
-            btnDeletePhoto.Visibility = Visibility.Visible;
-            btnDopPhoto.Visibility = Visibility.Collapsed;
+            ImageSer.Source = new BitmapImage(new Uri("..\\resource\\picture.png", UriKind.Relative));            
         }
 
         public PageAddUpdate(Service service) //конструктор для редактирования
         {
             this.service = service;
+
             InitializeComponent();
             flag = true;
             tbID.Visibility = Visibility.Visible;
@@ -51,7 +46,7 @@ namespace Faskhieva_School.Pages
             tbName.Text = service.Title;
             double cost = Convert.ToInt32(service.Cost);
             tbPrice.Text = Convert.ToString(cost);
-            tbTime.Text = Convert.ToString(service.DurationInSeconds / 60);
+            tbTime.Text = Convert.ToString(service.DurationInSeconds);
             tbDiscount.Text = Convert.ToString(service.Discount * 100);
             tbDes.Text = service.Description;
             txtH.Text = "Изменение услуги";
@@ -59,49 +54,69 @@ namespace Faskhieva_School.Pages
 
             if (service.MainImagePath != null)
             {
-                path = service.MainImagePath;
-                //ImageSer.Source = new BitmapImage(new Uri(Environment.CurrentDirectory + service.MainImagePath, UriKind.Absolute));
-                btnUpPhoto.Content = "Изменить фото";
+                path = service.MainImagePath;               
+                ImageSer.Source = new BitmapImage(new Uri(path, UriKind.Relative));
+                btnUpPhoto.Content = "Изменить фото";                
             }
             else
             {
                 path = null;
                 ImageSer.Source = new BitmapImage(new Uri("..\\resource\\picture.png", UriKind.Relative));
-            }
-
-            btnDopPhoto.Visibility=Visibility.Visible;
-            btnDeletePhoto.Visibility = Visibility.Visible;
-
+            }                        
         }
         private void btSave_Click(object sender, RoutedEventArgs e)
         {
             if (flag == false)
             {
-                if(tbName.Text == "" || tbPrice.Text == "" || tbTime.Text == "")
+                if (tbName.Text == "" || tbPrice.Text == "" || tbTime.Text == "")
                 {
                     MessageBox.Show("Не все обязательные поля заполнены!");
                 }
                 else
                 {
-                    service = new Service();
-                    service.Title = tbName.Text;
-                    service.Cost = Convert.ToInt32(tbPrice.Text);
-                    double skidka = Convert.ToDouble(tbDiscount.Text) / 100;
-                    service.Discount = skidka;
-                    service.DurationInSeconds = Convert.ToInt32(tbTime.Text);
-                    if (tbDes.Text == "")
+                    List<Service> services = DataBase.Base.Service.Where(z => z.Title == tbName.Text).ToList();
+                    if (services.Count > 0)
                     {
-                        service.Description = null;
+                        MessageBox.Show("Данная услуга уже существует", "Ошибка");
                     }
                     else
                     {
-                        service.Description = tbDes.Text;
+                        if (Convert.ToInt32(tbTime.Text) > 1440 || Convert.ToInt32(tbTime.Text) < 0)
+                        {
+                            MessageBox.Show("Длительность услуги не может быть отрицательной и не должна длиться больше 4 часов (1440 сек.)");
+                        }
+                        else
+                        {
+                            service = new Service();
+                            service.Title = tbName.Text;
+                            service.Cost = Convert.ToInt32(tbPrice.Text);
+                            service.DurationInSeconds = Convert.ToInt32(tbTime.Text);                            
+                            if (tbDiscount.Text == "")
+                            {
+                                service.Discount = null;
+                            }
+                            else
+                            {
+                                service.Discount = Convert.ToDouble(tbDiscount.Text) / 100;
+                            }
+                            if (tbDes.Text == "")
+                            {
+                                service.Description = null;
+                            }
+                            else
+                            {
+                                service.Description = tbDes.Text;
+                            }
+                            DataBase.Base.Service.Add(service);
+                            //photo = new ServicePhoto();
+                            //photo.ServiceID = service.ID;
+                            //photo.PhotoPath = path;
+                            //DataBase.Base.ServicePhoto.Add(photo);
+                            MessageBox.Show("Успешное добавление услуги!");
+                            DataBase.Base.SaveChanges();
+                            ClassFrame.frameL.Navigate(new Pages.ListOfService());
+                        }
                     }
-                    service.MainImagePath = path;
-                    DataBase.Base.Service.Add(service);
-                    MessageBox.Show("Успешное добавление услуги!");
-                    DataBase.Base.SaveChanges();
-                    ClassFrame.frameL.Navigate(new Pages.ListOfService());
                 }
             }
             else
@@ -112,52 +127,72 @@ namespace Faskhieva_School.Pages
                 }
                 else
                 {
-                    service.Title = tbName.Text;
-                    service.Cost = Convert.ToInt32(tbPrice.Text);
-                    double skidka = Convert.ToDouble(tbDiscount.Text) / 100;
-                    service.Discount = skidka;
-                    service.DurationInSeconds = Convert.ToInt32(tbTime.Text);
-                    if (tbDes.Text == "")
+                    List<Service> services = DataBase.Base.Service.Where(z => z.Title == tbName.Text).ToList();
+                    if (services.Count > 0)
                     {
-                        service.Description = null;
+                        MessageBox.Show("Данная услуга уже существует", "Ошибка");
                     }
                     else
                     {
-                        service.Description = tbDes.Text;
+                        if (Convert.ToInt32(tbTime.Text) > 1440 || Convert.ToInt32(tbTime.Text) < 0)
+                        {
+                            MessageBox.Show("Длительность услуги не может быть отрицательной и не должна длиться больше 4 часов (1440 сек.)");
+                        }
+                        else
+                        {
+                            service = new Service();
+                            service.Title = tbName.Text;
+                            service.Cost = Convert.ToInt32(tbPrice.Text);
+                            service.DurationInSeconds = Convert.ToInt32(tbTime.Text);
+                            if (tbDiscount.Text == "")
+                            {
+                                service.Discount = null;
+                            }
+                            else
+                            {
+                                service.Discount = Convert.ToDouble(tbDiscount.Text) / 100;
+                            }
+                            if (tbDes.Text == "")
+                            {
+                                service.Description = null;
+                            }
+                            else
+                            {
+                                service.Description = tbDes.Text;
+                            }
+                            //photo = new ServicePhoto();
+                            //photo.ServiceID = service.ID;
+                            //photo.PhotoPath = path;
+                            //DataBase.Base.ServicePhoto.Add(photo);
+                            service.MainImagePath = path;                       
+                            DataBase.Base.SaveChanges();
+                            MessageBox.Show("Успешное изменение услуги!");
+                            ClassFrame.frameL.Navigate(new Pages.ListOfService());
+                        }
                     }
-                    service.MainImagePath = path;
-                    DataBase.Base.Service.Add(service);
-                    MessageBox.Show("Успешное изменение услуги!");
-                    DataBase.Base.SaveChanges();
-                    ClassFrame.frameL.Navigate(new Pages.ListOfService());
                 }
             }
-        }        
+        }
         
         private void btnUpPhoto_Click(object sender, RoutedEventArgs e)
         {
             try
             {
                 OpenFileDialog OFD = new OpenFileDialog();
-                OFD.InitialDirectory = Environment.CurrentDirectory.Substring(0, Environment.CurrentDirectory.Length - 9) + "Images\\";
                 OFD.ShowDialog();
                 path = OFD.FileName;
                 string[] arrayPath = path.Split('\\');
                 path = "\\" + arrayPath[arrayPath.Length - 2] + "\\" + arrayPath[arrayPath.Length - 1];
                 ImageSer.Source = new BitmapImage(new Uri(path, UriKind.Relative));
+                btnUpPhoto.Content = "Изменить фото";                
             }
             catch
             {
                 MessageBox.Show("Что-то пошло не так...");
             }
-        }
+        }      
 
-        private void btnDopPhoto_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void tbTime_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        private void tbTime_PreviewTextInput(object sender, TextCompositionEventArgs e) //запрет на ввод символов
         {
             if (!(Char.IsDigit(e.Text, 0)))
             {
@@ -168,11 +203,6 @@ namespace Faskhieva_School.Pages
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
             ClassFrame.frameL.Navigate(new ListOfService());
-        }
-
-        private void btnDeletePhoto_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+        }        
     }
 }

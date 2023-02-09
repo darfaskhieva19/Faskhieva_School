@@ -23,12 +23,10 @@
                 <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
             
-            <StackPanel Grid.Column="0">
-                <Image Source="\resource/picture.png" Width="160" Height="160" Name="ImageSer"/>
+            <StackPanel Grid.Column="0" VerticalAlignment="Center">
+                <Image Source="\resource/picture.png" Width="180" Height="180" Name="ImageSer"/>
                 <StackPanel Margin="10">
-                    <Button Name="btnUpPhoto" Content="Добавить фото" Click="btnUpPhoto_Click" Margin="5" Template="{StaticResource Btn2}"/>
-                    <Button Name="btnDeletePhoto" Content="Удалить фото" Click="btnDeletePhoto_Click" Template="{StaticResource Btn2}" Visibility="Collapsed"/>
-                    <Button Content="Добавить доп.фото" Name="btnDopPhoto" Click="btnDopPhoto_Click" Template="{StaticResource Btn3}" Visibility="Collapsed"/>                   
+                    <Button Name="btnUpPhoto" Content="Добавить фото" Click="btnUpPhoto_Click" Margin="5" Template="{StaticResource Btn2}"/>                   
                 </StackPanel>
             </StackPanel>
 
@@ -48,7 +46,7 @@
                             <TextBox Name="tbPrice" Width="100"/>
                         </StackPanel>
                         <StackPanel Margin="5">
-                            <TextBlock Text="Длительность (мин.)"/>
+                            <TextBlock Text="Длительность (сек.)"/>
                             <TextBox Name="tbTime" Width="100" PreviewTextInput="tbTime_PreviewTextInput"/>
                         </StackPanel>
                         <StackPanel Margin="5">

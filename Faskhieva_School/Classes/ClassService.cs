@@ -51,17 +51,7 @@ namespace Faskhieva_School
                 else
                 {
                     return Convert.ToDouble(Cost);
-                }
-
-                //if (Discount != null)
-                //{
-                //    double f = (double)Cost - (double)Cost * (double)Discount;
-                //    return string.Format("{0:C2} {1:C2} за {2} минут *скидка {3} %", Cost, f, DurationInSeconds / 60, Discount * 100);
-                //}
-                //else
-                //{
-                //    return string.Format("{0:C2} за {1} минут", Cost, DurationInSeconds / 60);
-                //}
+                }                
             }
         }
     }
